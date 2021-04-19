@@ -1,0 +1,45 @@
+<?php
+/**
+ * Movie List Class, Include Required Files
+ *
+ * @package MovieList/includes
+ */
+
+namespace movielist\includes;
+
+use movielist\includes\classes\Custom_Posts;
+use movielist\includes\classes\Short_Code;
+use movielist\includes\classes\Taxonomies;
+
+defined( 'ABSPATH' ) || exit;
+
+/**
+ * MovieList class which contains all the functions to include required files.
+ */
+class Movie_List {
+	/**
+	 * Initialization of functions to load include files.
+	 */
+	public function __construct() {
+		$this->includes();
+		$this->load_includes();
+	}
+
+	/**
+	 * Includes the required files.
+	 */
+	protected function includes() {
+		include_once BU_PLUGIN_PATH . 'includes/classes/class-short-code.php';
+		include_once BU_PLUGIN_PATH . 'includes/classes/class-custom-posts.php';
+		include_once BU_PLUGIN_PATH . 'includes/classes/class-taxonomies.php';
+	}
+
+	/**
+	 * Loading required files calling static classes.
+	 */
+	public function load_includes() {
+		Short_Code::generate_shortcode();
+		new Custom_Posts();
+		new Taxonomies();
+	}
+}

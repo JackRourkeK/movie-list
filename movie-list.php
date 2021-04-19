@@ -37,9 +37,28 @@ along with Movie List. If not, see {URI to Plugin License}.
 
 namespace MovieList;
 
-/**
- * Function to Load Plugin
- */
-function movie_list() {
+use movielist\includes\Movie_List;
 
+// Code exits if the plugin execution is done by another frameworks or CMS.
+defined( 'ABSPATH' ) || exit;
+
+if ( ! defined( 'BU_PLUGIN_FILE' ) ) {
+	define( 'BU_PLUGIN_FILE', __FILE__ );
+}
+
+if ( ! defined( 'BU_PLUGIN_PATH' ) ) {
+	define( 'BU_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+}
+
+if ( ! defined( 'BU_PLUGIN_URL' ) ) {
+	define( 'BU_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
+
+if ( ! defined( 'BU_PLUGIN_BASENAME' ) ) {
+	define( 'BU_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+}
+
+if ( ! class_exists( 'Movie_List' ) ) {
+	include BU_PLUGIN_PATH . 'includes/class-movie-list.php';
+	new Movie_List();
 }
