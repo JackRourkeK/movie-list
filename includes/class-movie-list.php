@@ -8,6 +8,7 @@
 namespace includes;
 
 use includes\classes\Custom_Posts;
+use includes\classes\Custom_Style;
 use includes\classes\Short_Code;
 use includes\classes\Taxonomies;
 
@@ -33,12 +34,14 @@ class Movie_List {
 		include_once BU_PLUGIN_PATH . 'includes/classes/class-custom-posts.php';
 		include_once BU_PLUGIN_PATH . 'includes/classes/class-taxonomies.php';
 		include_once BU_PLUGIN_PATH . 'includes/classes/class-custom-metabox.php';
+		include_once BU_PLUGIN_PATH . 'includes/classes/class-custom-style.php';
 	}
 
 	/**
 	 * Loading required files calling static classes.
 	 */
 	public function load_includes() {
+		Custom_Style::add_styles();
 		Short_Code::generate_shortcode();
 		new Custom_Posts();
 		new Taxonomies();

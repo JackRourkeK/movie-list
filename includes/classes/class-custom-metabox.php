@@ -13,7 +13,6 @@ defined( 'ABSPATH' ) || exit;
  * Metabox Class
  */
 class Custom_Metabox {
-
 	/**
 	 * Initialization of Custom Metabox and Save post.
 	 */
@@ -26,13 +25,13 @@ class Custom_Metabox {
 	 * Function to add metabox to the mentioned post type (post, movie-list and so on).
 	 */
 	public static function add() {
-		$to_show = array( 'post', 'movie-list' );
-		foreach ( $to_show as $screens ) {
+		$screen_to_show = array( 'post', 'movie-list' );
+		foreach ( $screen_to_show as $screens ) {
 			add_meta_box(
 				'movie_price_id',
 				'Movie Details',
 				array( self::class, 'box_html_field' ),
-				$to_show
+				$screen_to_show
 			);
 		}
 	}
@@ -43,11 +42,30 @@ class Custom_Metabox {
 	 * @param int $post_id to save the metabox for given post id.
 	 */
 	public static function save( int $post_id ) {
-		if ( array_key_exists( 'movie_price', $_POST ) ) {
+		$movie_price  = ( isset( $_POST['movie_price'] ) && ! empty( $_POST['movie_price'] ) ) ? sanitize_text_field(
+			wp_unslash( $_POST['movie_price'] )
+		) : 0;
+		$movie_rating = ( isset( $_POST['movie_rating'] ) && ! empty( $_POST['movie_rating'] ) ) ? sanitize_text_field(
+			wp_unslash( $_POST['movie_rating'] )
+		) : 0;
+
+		self::update_movie_list_fields( $post_id, 'movie_price', $movie_price );
+		self::update_movie_list_fields( $post_id, 'movie_rating', $movie_rating );
+	}
+
+	/**
+	 * Update Movie List Fields
+	 *
+	 * @param int    $post_id (Post ID ).
+	 * @param string $field_name (Field which we have to update).
+	 * @param mixed  $field_value (Value to update).
+	 */
+	private static function update_movie_list_fields( $post_id, $field_name, $field_value ) {
+		if ( array_key_exists( $field_name, $_POST ) ) {
 			update_post_meta(
 				$post_id,
-				'_movie_price',
-				$_POST['movie_price'],
+				$field_name,
+				$field_value
 			);
 		}
 	}
@@ -55,19 +73,14 @@ class Custom_Metabox {
 	/**
 	 * Function to show the HTML Field for Movie Price Metabox
 	 *
-	 * @param mixed $post Get the value from post.
+	 * @param mixed $post (Get the value from post).
 	 */
 	public static function box_html_field( $post ) {
-		wp_nonce_field( BU_PLUGIN_BASENAME, 'movie_price_box_content_nonce' );
-		$movie_price_key = get_post_meta( $post->ID, '_movie_price', true );
-		$movie_price     = get_terms(
-			array(
-				'taxonomy' => '_movie_price',
-			),
-		);
-		$box_html        = '';
-		$box_html       .= '<label for="movie_price">Movie Price</label>';
-		$box_html       .= '<input type="text" id="movie_price" name="movie_price" placeholder="Enter Movie Price" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_price', true ) ) . '">';
+		$box_html  = '';
+		$box_html .= '<label for="movie_price">Movie Price: </label>';
+		$box_html .= '<input type="text" id="movie_price" name="movie_price" placeholder="Enter Movie Price" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_price', true ) ) . '">';
+		$box_html .= ' <label for="movie_rating">Movie Rating: </label>';
+		$box_html .= '<input type="number" id="movie_rating" min="1" max="5" name="movie_rating" placeholder="Enter Rating" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_rating', true ) ) . '">';
 		echo $box_html;
 	}
 }

@@ -37,11 +37,29 @@ class Short_Code {
 				$result_html = '';
 
 				foreach ( $get_movie_list as $movie_list ) {
+					$get_rating_value = get_post_meta( $movie_list->ID, 'movie_rating', true );
+					$rating_value     = '';
+					$rating_value    .= '<div class="wrapper-star">
+					<input type="radio" id="r1" name="rg1"><label for="r1">&#10038;</label>
+					<input type="radio" id="r2" name="rg1"><label for="r2">&#10038;</label>
+					<input type="radio" id="r3" name="rg1"><label for="r3">&#10038;</label>
+					<input type="radio" id="r4" name="rg1"><label for="r4">&#10038;</label>
+					<input type="radio" id="r5" name="rg1"><label for="r5">&#10038;</label></div>';
+					// $rating_value .= '<input type="radio" id="rating-' . get_post_meta( $movie_list->ID, 'movie_rating', true ) . '" name="rating" value="' . get_post_meta( $movie_list->ID, 'movie_rating', true ) . '" /><label for="rating-' . get_post_meta( $movie_list->ID, 'movie_rating', true ) . '">' . get_post_meta( $movie_list->ID, 'movie_rating', true ) . '</label>';
 					$result_html .= '<div class="entry-content"><h1><a href="' . get_permalink( $movie_list->ID ) . '">'
 					. $movie_list->post_title
-					. '</h1>'
-					. $movie_list->post_name
-					. '</a><p>'
+					. '</h1></a>'
+					. '<h3> Movie Price: NRs. <u>'
+					. get_post_meta( $movie_list->ID, 'movie_price', true ) . '</u></h3>'
+					. $rating_value . '<br>'
+					. get_the_post_thumbnail(
+						$movie_list->ID,
+						'post-thumbnail',
+						array(
+							'class' => 'movie-img',
+							'style' => 'width:100px; height:100px;',
+						)
+					)
 					. $movie_list->post_content
 					. '</p></div>';
 
