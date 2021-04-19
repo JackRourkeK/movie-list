@@ -5,7 +5,7 @@
  * @package MovieList/includes/classes/class-short-code.php
  */
 
-namespace movielist\includes\classes;
+namespace includes\classes;
 
 defined( 'ABSPATH' ) || exit;
 

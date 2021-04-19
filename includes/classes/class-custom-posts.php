@@ -5,21 +5,23 @@
  * @package MovieList/includes/classes/custom-post-type.php
  */
 
-namespace movielist\includes\classes;
+namespace includes\classes;
+
+use includes\classes\Custom_Metabox as Custom_MetaBoxes;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
  * Custom Post Type Class
  */
-class Custom_Posts extends Custom_Metabox {
+class Custom_Posts {
 
 	/**
 	 * Initialization of function to generate custom post.
 	 */
 	public function __construct() {
-		$custom_metabox = new Custom_Metabox();
-		add_action( 'init', array( $custom_metabox, 'adds' ) );
+		$custom_metabox = new Custom_MetaBoxes();
+		add_action( 'init', array( $custom_metabox, 'generate_metaboxes' ) );
 		add_action( 'init', array( $this, 'generate_custom_posts' ) );
 	}
 

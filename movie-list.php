@@ -37,7 +37,7 @@ along with Movie List. If not, see {URI to Plugin License}.
 
 namespace MovieList;
 
-use movielist\includes\Movie_List;
+use includes\Movie_List;
 
 // Code exits if the plugin execution is done by another frameworks or CMS.
 defined( 'ABSPATH' ) || exit;

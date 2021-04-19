@@ -5,11 +5,11 @@
  * @package MovieList/includes
  */
 
-namespace movielist\includes;
+namespace includes;
 
-use movielist\includes\classes\Custom_Posts;
-use movielist\includes\classes\Short_Code;
-use movielist\includes\classes\Taxonomies;
+use includes\classes\Custom_Posts;
+use includes\classes\Short_Code;
+use includes\classes\Taxonomies;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -32,6 +32,7 @@ class Movie_List {
 		include_once BU_PLUGIN_PATH . 'includes/classes/class-short-code.php';
 		include_once BU_PLUGIN_PATH . 'includes/classes/class-custom-posts.php';
 		include_once BU_PLUGIN_PATH . 'includes/classes/class-taxonomies.php';
+		include_once BU_PLUGIN_PATH . 'includes/classes/class-custom-metabox.php';
 	}
 
 	/**

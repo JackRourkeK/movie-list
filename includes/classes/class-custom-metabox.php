@@ -5,7 +5,7 @@
  * @package MovieList/includes/classes/class-metabox.php
  */
 
-namespace movielist\includes\classes;
+namespace includes\classes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -17,13 +17,9 @@ class Custom_Metabox {
 	/**
 	 * Initialization of Custom Metabox and Save post.
 	 */
-	public function __construct() {
-		add_action( 'add_meta_boxes', array( $this, 'adds' ) );
-		// add_action( 'save_post', array( self::class, 'save' ) );
-	}
-
-	public function adds() {
-		echo 'Hello People';
+	public function generate_metaboxes() {
+		add_action( 'add_meta_boxes', array( self::class, 'add' ) );
+		add_action( 'save_post', array( self::class, 'save' ) );
 	}
 
 	/**
@@ -35,7 +31,7 @@ class Custom_Metabox {
 			add_meta_box(
 				'movie_price_id',
 				'Movie Details',
-				array( self::class, 'html' ),
+				array( self::class, 'box_html_field' ),
 				$to_show
 			);
 		}
@@ -70,8 +66,8 @@ class Custom_Metabox {
 			),
 		);
 		$box_html        = '';
-		$box_html       .= '<label for="movie_price">Movie Type</label>';
+		$box_html       .= '<label for="movie_price">Movie Price</label>';
 		$box_html       .= '<input type="text" id="movie_price" name="movie_price" placeholder="Enter Movie Price" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_price', true ) ) . '">';
-		return $box_html;
+		echo $box_html;
 	}
 }

@@ -5,7 +5,7 @@
  * @package MovieList/includes/classes/taxonomies.php
  */
 
-namespace movielist\includes\classes;
+namespace includes\classes;
 
 defined( 'ABSPATH' ) || exit;
 
