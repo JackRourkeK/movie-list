@@ -1,5 +1,6 @@
 .wrapper-star {
 	display: inline-block;
+	font-weight: bold;
   }
   .wrapper-star * {
 	float: right;

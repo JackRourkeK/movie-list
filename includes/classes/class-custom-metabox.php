@@ -71,7 +71,7 @@ class Custom_Metabox {
 	}
 
 	/**
-	 * Function to show the HTML Field for Movie Price Metabox
+	 * Function to show the HTML Field for Movie Price and Rating Metabox
 	 *
 	 * @param mixed $post (Get the value from post).
 	 */

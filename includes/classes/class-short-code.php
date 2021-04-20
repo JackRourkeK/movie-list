@@ -37,23 +37,31 @@ class Short_Code {
 
 				$result_html = '';
 
-				foreach ( $get_movie_list as $movie_list ) {
+				foreach ( $get_movie_list as $movie_key => $movie_list ) {
 					$get_rating_value = get_post_meta( $movie_list->ID, 'movie_rating', true );
 					$get_movie_price  = get_post_meta( $movie_list->ID, 'movie_price', true );
-					$rating_value     = '';
-					$movie_price      = '';
+					$get_movie_tags   = get_the_terms( $movie_list->ID, 'movie_type' );
+
+					$get_movie_tags_name = implode( ', ', self::get_movie_tags( $get_movie_tags ) );
+
+					$rating_value = '';
+					$movie_price  = '';
+					$movie_tags   = '';
+
 					if ( $get_rating_value > 0 ) {
-						$rating_value .= '<div class="wrapper-star">
+						$rating_value .= '<br><div class="wrapper-star">
 						<input type="radio" id="r1" name="rg1">Rating: <label for="r1">&nbsp;' . $get_rating_value . '&#10038;</label></div><br>';
 					}
 					if ( $get_movie_price > 0 ) {
 						$movie_price .= '<h3> Movie Price: NRs. <u>' . $get_movie_price . '</u></h3>';
 					}
+					if ( ! empty( $get_movie_tags ) ) {
+						$movie_tags .= '<br><strong> Movie Tags: </strong>' . $get_movie_tags_name;
+					}
 					$result_html .= '<div class="entry-content"><h1><a href="' . get_permalink( $movie_list->ID ) . '">'
 					. $movie_list->post_title
 					. '</h1></a>'
 					. $movie_price
-					. $rating_value
 					. get_the_post_thumbnail(
 						$movie_list->ID,
 						'post-thumbnail',
@@ -62,6 +70,8 @@ class Short_Code {
 							'style' => 'width:100px; height:100px;',
 						)
 					)
+					. $rating_value
+					. $movie_tags
 					. ( ( ! empty( $movie_list->post_content ) ) ? '<h3>Movie Details: </h3>' : '' ) . $movie_list->post_content
 					. '</p></div>';
 
@@ -83,5 +93,20 @@ class Short_Code {
 				return $result_html;
 			}
 		);
+	}
+
+	/**
+	 * Function to Get Movie Tags for Custom Post Type
+	 *
+	 * @param array $get_movie_tags (Movie Tag results passed and returns result.).
+	 */
+	private static function get_movie_tags( $get_movie_tags ) {
+		$movie_tags = array();
+		if ( ! empty( $get_movie_tags ) ) {
+			foreach ( $get_movie_tags as $movie_tags_value ) {
+				$movie_tags[] = $movie_tags_value->name;
+			}
+		}
+		return $movie_tags;
 	}
 }
