@@ -37,7 +37,7 @@ class Short_Code {
 
 				$result_html = '';
 
-				foreach ( $get_movie_list as $movie_key => $movie_list ) {
+				foreach ( $get_movie_list as $movie_list ) {
 					$get_rating_value = get_post_meta( $movie_list->ID, 'movie_rating', true );
 					$get_movie_price  = get_post_meta( $movie_list->ID, 'movie_price', true );
 					$get_movie_tags   = get_the_terms( $movie_list->ID, 'movie_type' );
