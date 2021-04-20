@@ -31,27 +31,29 @@ class Short_Code {
 					'paged'          => $paged,
 				);
 
-				$get_movie_list  = get_posts( $movie_list_args );
+				$get_movie_list = get_posts( $movie_list_args );
+
 				$get_movie_count = count( get_posts( array( 'post_type' => 'movie-list' ) ) );
 
 				$result_html = '';
 
 				foreach ( $get_movie_list as $movie_list ) {
 					$get_rating_value = get_post_meta( $movie_list->ID, 'movie_rating', true );
+					$get_movie_price  = get_post_meta( $movie_list->ID, 'movie_price', true );
 					$rating_value     = '';
-					$rating_value    .= '<div class="wrapper-star">
-					<input type="radio" id="r1" name="rg1"><label for="r1">&#10038;</label>
-					<input type="radio" id="r2" name="rg1"><label for="r2">&#10038;</label>
-					<input type="radio" id="r3" name="rg1"><label for="r3">&#10038;</label>
-					<input type="radio" id="r4" name="rg1"><label for="r4">&#10038;</label>
-					<input type="radio" id="r5" name="rg1"><label for="r5">&#10038;</label></div>';
-					// $rating_value .= '<input type="radio" id="rating-' . get_post_meta( $movie_list->ID, 'movie_rating', true ) . '" name="rating" value="' . get_post_meta( $movie_list->ID, 'movie_rating', true ) . '" /><label for="rating-' . get_post_meta( $movie_list->ID, 'movie_rating', true ) . '">' . get_post_meta( $movie_list->ID, 'movie_rating', true ) . '</label>';
+					$movie_price      = '';
+					if ( $get_rating_value > 0 ) {
+						$rating_value .= '<div class="wrapper-star">
+						<input type="radio" id="r1" name="rg1">Rating: <label for="r1">&nbsp;' . $get_rating_value . '&#10038;</label></div><br>';
+					}
+					if ( $get_movie_price > 0 ) {
+						$movie_price .= '<h3> Movie Price: NRs. <u>' . $get_movie_price . '</u></h3>';
+					}
 					$result_html .= '<div class="entry-content"><h1><a href="' . get_permalink( $movie_list->ID ) . '">'
 					. $movie_list->post_title
 					. '</h1></a>'
-					. '<h3> Movie Price: NRs. <u>'
-					. get_post_meta( $movie_list->ID, 'movie_price', true ) . '</u></h3>'
-					. $rating_value . '<br>'
+					. $movie_price
+					. $rating_value
 					. get_the_post_thumbnail(
 						$movie_list->ID,
 						'post-thumbnail',
@@ -60,7 +62,7 @@ class Short_Code {
 							'style' => 'width:100px; height:100px;',
 						)
 					)
-					. $movie_list->post_content
+					. ( ( ! empty( $movie_list->post_content ) ) ? '<h3>Movie Details: </h3>' : '' ) . $movie_list->post_content
 					. '</p></div>';
 
 				}
@@ -72,7 +74,6 @@ class Short_Code {
 				$result_html .= paginate_links(
 					array(
 						'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-						'format'    => 'pages/%#%',
 						'current'   => max( 1, $paged ),
 						'total'     => $max_pages_count,
 						'prev_next' => __( '« Prev' ),
