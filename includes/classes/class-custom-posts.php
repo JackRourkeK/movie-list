@@ -23,6 +23,8 @@ class Custom_Posts {
 		$custom_metabox = new Custom_MetaBoxes();
 		add_action( 'init', array( $custom_metabox, 'generate_metaboxes' ) );
 		add_action( 'init', array( $this, 'generate_custom_posts' ) );
+		add_filter( 'single_template', array( $this, 'single_page_posts' ) );
+
 	}
 
 	/**
@@ -63,5 +65,35 @@ class Custom_Posts {
 			'query_var'          => true,
 		);
 		register_post_type( 'movie-list', $args );
+	}
+
+	/**
+	 * Function to call single page for the movie detail page
+	 *
+	 * @param mixed $single (Returns single page).
+	 */
+	public function single_page_posts( $single ) {
+		global $post;
+		if ( 'movie-list' === $post->post_type && is_singular( 'movie-list' ) ) {
+			if ( file_exists( BU_PLUGIN_PATH . 'public/templates/single-movie-list.php' ) ) {
+				return BU_PLUGIN_PATH . 'public/templates/single-movie-list.php';
+			}
+		}
+		return $single;
+	}
+
+	/**
+	 * Function to Get Movie Tags for Custom Post Type
+	 *
+	 * @param array $get_movie_tags (Movie Tag results passed and returns result.).
+	 */
+	private static function get_movie_tags( $get_movie_tags ) {
+		$movie_tags = array();
+		if ( ! empty( $get_movie_tags ) ) {
+			foreach ( $get_movie_tags as $movie_tags_value ) {
+				$movie_tags[] = $movie_tags_value->name;
+			}
+		}
+		return $movie_tags;
 	}
 }

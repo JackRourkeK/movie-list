@@ -80,12 +80,41 @@ class Custom_Metabox {
 	 * @param mixed $post (Get the value from post).
 	 */
 	public static function box_html_field( $post ) {
-		$box_html  = '';
-		$box_html .= '<input type="hidden" name="bu_post_nonce" value="' . wp_create_nonce( 'bu_post_nonce' ) . '">';
-		$box_html .= '<label for="movie_price">Movie Price: </label>';
-		$box_html .= '<input type="text" id="movie_price" name="movie_price" placeholder="Enter Movie Price" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_price', true ) ) . '">';
-		$box_html .= '<label for="movie_rating">Movie Rating: </label>';
-		$box_html .= '<input type="number" id="movie_rating" min="1" max="5" name="movie_rating" placeholder="Enter Rating" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_rating', true ) ) . '">';
-		echo $box_html;
+		$box_html     = '';
+		$box_html    .= '<input type="hidden" name="bu_post_nonce" value="' . wp_create_nonce( 'bu_post_nonce' ) . '">';
+		$box_html    .= '<label for="movie_price">Movie Price: </label>';
+		$box_html    .= '<input type="text" id="movie_price" name="movie_price" placeholder="Enter Movie Price" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_price', true ) ) . '">';
+		$box_html    .= '<label for="movie_rating">Movie Rating: </label>';
+		$box_html    .= '<input type="number" id="movie_rating" min="1" max="5" name="movie_rating" placeholder="Enter Rating" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_rating', true ) ) . '">';
+		$allowed_html = array(
+			'a'      => array(
+				'href'  => array(),
+				'title' => array(),
+			),
+			'br'     => array(),
+			'u'      => array(),
+			'em'     => array(),
+			'strong' => array(),
+			'h3'     => array(),
+			'input'  => array(
+				'type'        => array(),
+				'id'          => array(),
+				'min'         => array(),
+				'max'         => array(),
+				'name'        => array(),
+				'placeholder' => array(),
+				'value'       => array(),
+			),
+			'label'  => array(
+				'for'   => array(),
+				'class' => array(),
+			),
+			'div'    => array(
+				'class' => array(
+					'wrapper-star' => array(),
+				),
+			),
+		);
+		echo wp_kses( $box_html, $allowed_html );
 	}
 }
