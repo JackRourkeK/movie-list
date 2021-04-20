@@ -48,29 +48,9 @@ get_header(); ?>
 					$movie_tags_list .= '<br><strong> Movie Tags: </strong>' . $get_movie_tags_name . '<br />';
 				}
 
-				$allowed_html = array(
-					'a'      => array(
-						'href'  => array(),
-						'title' => array(),
-					),
-					'br'     => array(),
-					'u'      => array(),
-					'em'     => array(),
-					'strong' => array(),
-					'h3'     => array(),
-					'label'  => array(
-						'for'   => array(),
-						'class' => array(),
-					),
-					'div'    => array(
-						'class' => array(
-							'wrapper-star' => array(),
-						),
-					),
-				);
-					echo wp_kses( $movie_price, $allowed_html );
-					echo wp_kses( $movie_tags_list, $allowed_html );
-					echo wp_kses( $rating_value, $allowed_html );
+				echo wp_kses_post( $movie_price );
+				echo wp_kses_post( $movie_tags_list );
+				echo wp_kses_post( $rating_value );
 
 					get_template_part( 'content', get_post_format() );
 				?>
