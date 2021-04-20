@@ -42,15 +42,18 @@ class Custom_Metabox {
 	 * @param int $post_id to save the metabox for given post id.
 	 */
 	public static function save( int $post_id ) {
-		$movie_price  = ( isset( $_POST['movie_price'] ) && ! empty( $_POST['movie_price'] ) ) ? sanitize_text_field(
-			wp_unslash( $_POST['movie_price'] )
-		) : 0;
-		$movie_rating = ( isset( $_POST['movie_rating'] ) && ! empty( $_POST['movie_rating'] ) ) ? sanitize_text_field(
-			wp_unslash( $_POST['movie_rating'] )
-		) : 0;
+		if ( isset( $_POST['bu_post_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['bu_post_nonce'] ) ), 'bu_post_nonce' ) ) {
+			$movie_price  = ( isset( $_POST['movie_price'] ) && ! empty( $_POST['movie_price'] ) ) ? sanitize_text_field(
+				wp_unslash( $_POST['movie_price'] )
+			) : 0;
+			$movie_rating = ( isset( $_POST['movie_rating'] ) && ! empty( $_POST['movie_rating'] ) ) ? sanitize_text_field(
+				wp_unslash( $_POST['movie_rating'] )
+			) : 0;
 
-		self::update_movie_list_fields( $post_id, 'movie_price', $movie_price );
-		self::update_movie_list_fields( $post_id, 'movie_rating', $movie_rating );
+			self::update_movie_list_fields( $post_id, 'movie_price', $movie_price, $_POST );
+			self::update_movie_list_fields( $post_id, 'movie_rating', $movie_rating, $_POST );
+		}
+		return true;
 	}
 
 	/**
@@ -59,9 +62,10 @@ class Custom_Metabox {
 	 * @param int    $post_id (Post ID ).
 	 * @param string $field_name (Field which we have to update).
 	 * @param mixed  $field_value (Value to update).
+	 * @param mixed  $data (Data to update).
 	 */
-	private static function update_movie_list_fields( $post_id, $field_name, $field_value ) {
-		if ( array_key_exists( $field_name, $_POST ) ) {
+	private static function update_movie_list_fields( $post_id, $field_name, $field_value, $data ) {
+		if ( array_key_exists( $field_name, $data ) ) {
 			update_post_meta(
 				$post_id,
 				$field_name,
@@ -77,9 +81,10 @@ class Custom_Metabox {
 	 */
 	public static function box_html_field( $post ) {
 		$box_html  = '';
+		$box_html .= '<input type="hidden" name="bu_post_nonce" value="' . wp_create_nonce( 'bu_post_nonce' ) . '">';
 		$box_html .= '<label for="movie_price">Movie Price: </label>';
 		$box_html .= '<input type="text" id="movie_price" name="movie_price" placeholder="Enter Movie Price" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_price', true ) ) . '">';
-		$box_html .= ' <label for="movie_rating">Movie Rating: </label>';
+		$box_html .= '<label for="movie_rating">Movie Rating: </label>';
 		$box_html .= '<input type="number" id="movie_rating" min="1" max="5" name="movie_rating" placeholder="Enter Rating" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_rating', true ) ) . '">';
 		echo $box_html;
 	}

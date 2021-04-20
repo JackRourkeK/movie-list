@@ -49,8 +49,12 @@ class Short_Code {
 					$movie_tags   = '';
 
 					if ( $get_rating_value > 0 ) {
-						$rating_value .= '<br><div class="wrapper-star">
-						<input type="radio" id="r1" name="rg1">Rating: <label for="r1">&nbsp;' . $get_rating_value . '&#10038;</label></div><br>';
+						$rating_value .= '<br/>';
+						$rating_value .= '<div class="wrapper-star">';
+						for ( $i = 1; $i <= $get_rating_value; $i++ ) {
+							$rating_value .= '<label for="r1">&#10038;</label>';
+						}
+						$rating_value .= '<br/></div>';
 					}
 					if ( $get_movie_price > 0 ) {
 						$movie_price .= '<h3> Movie Price: NRs. <u>' . $get_movie_price . '</u></h3>';
