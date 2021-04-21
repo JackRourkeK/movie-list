@@ -14,14 +14,19 @@ defined( 'ABSPATH' ) || exit;
  */
 class Custom_Style {
 	/**
-	 * Adding Styles to Rating Star
+	 * Adding Styles to Rating Stars by adding action to wp_enqueue scripts
 	 */
 	public static function add_styles() {
-		add_action(
-			'init',
-			function () {
-				wp_enqueue_style( 'bu_styles', BU_PLUGIN_URL . 'public/css/style.css', '1.0', array() );
-			}
-		);
+		if ( ! is_admin() ) {
+			add_action( 'wp_enqueue_scripts', array( self::class, 'enqueue_custom_front_style' ) );
+		}
+	}
+
+	/**
+	 * Function to register styles and enqueue to front.
+	 */
+	public static function enqueue_custom_front_style() {
+		wp_register_style( 'bu_styles', BU_PLUGIN_URL . 'public/css/style.css', false, 'all' );
+		wp_enqueue_style( 'bu_styles' );
 	}
 }
