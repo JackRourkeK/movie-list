@@ -5,7 +5,7 @@
  * @package MovieList/includes/classes/class-short-code.php
  */
 
-namespace includes\classes;
+namespace MovieList\Classes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -87,11 +87,9 @@ class Short_Code {
 
 				$result_html .= paginate_links(
 					array(
-						'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-						'current'   => max( 1, $paged ),
-						'total'     => $max_pages_count,
-						'prev_next' => __( '« Prev' ),
-						'next_text' => __( 'Next »' ),
+						'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+						'current' => max( 1, $paged ),
+						'total'   => $max_pages_count,
 					)
 				);
 				return $result_html;

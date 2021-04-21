@@ -1,0 +1,17 @@
+{
+    "name": "jack-rourke/movie-list",
+    "description": "Movie List Custom Post Type with Taxonomy, and Metabox",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Balram Upadhyay",
+            "email": "JackRourkeK@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+	"autoload": {
+		"psr-4": {"MovieList\\":"./includes"}
+	}
+}

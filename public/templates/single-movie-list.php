@@ -5,11 +5,11 @@
  * @package MovieList/public/templates/single-movie-list.php
  */
 
-get_header(); ?>
+?>
 
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
-
+		<a href="<?php echo esc_attr( esc_url( home_url( '/' ) ) ); ?>"><?php echo esc_html__( 'Home Page', 'movie-list' ); ?></a>
 			<?php
 			while ( have_posts() ) :
 				the_post();
@@ -52,13 +52,14 @@ get_header(); ?>
 				echo wp_kses_post( $movie_tags_list );
 				echo wp_kses_post( $rating_value );
 
-					get_template_part( 'content', get_post_format() );
+				get_template_part( 'content', get_post_format() );
+
 				?>
 
 				<nav class="nav-single">
-					<h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'twentytwelve' ); ?></h3>
-					<span class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'twentytwelve' ) . '</span> %title' ); ?></span>
-					<span class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'twentytwelve' ) . '</span>' ); ?></span>
+					<h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'movie-list' ); ?></h3>
+					<span class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'movie-list' ) . '</span> %title' ); ?></span>
+					<span class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'movie-list' ) . '</span>' ); ?></span>
 				</nav><!-- .nav-single -->
 
 				<?php comments_template( '', true ); ?>
@@ -67,6 +68,3 @@ get_header(); ?>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>

@@ -1,9 +1,8 @@
 <?php
 /**
- * Plugin Name
+ * Plugin Name: Movie List
  *
  * @package MovieList
- * Plugin Name: Movie List
  * Plugin URI: https://github.com/JackRourkeK/movie-list
  * Description: Movie Listing with Custom Categories and Tags. Listing and Details Page Included.
  * Version: 1.0.0
@@ -15,12 +14,14 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-namespace MovieList;
-
-use includes\Movie_List;
+use MovieList\Movie_List;
 
 // Code exits if the plugin execution is done by another frameworks or CMS.
 defined( 'ABSPATH' ) || exit;
+
+if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
+	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+}
 
 if ( ! defined( 'BU_PLUGIN_FILE' ) ) {
 	define( 'BU_PLUGIN_FILE', __FILE__ );
@@ -39,6 +40,5 @@ if ( ! defined( 'BU_PLUGIN_BASENAME' ) ) {
 }
 
 if ( ! class_exists( 'Movie_List' ) ) {
-	include BU_PLUGIN_PATH . 'includes/class-movie-list.php';
-	new Movie_List();
+	Movie_List::load_includes();
 }

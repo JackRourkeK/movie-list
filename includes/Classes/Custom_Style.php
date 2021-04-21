@@ -5,7 +5,7 @@
  * @package MovieList/includes/classes/class-metabox.php
  */
 
-namespace includes\classes;
+namespace MovieList\Classes;
 
 defined( 'ABSPATH' ) || exit;
 

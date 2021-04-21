@@ -5,7 +5,7 @@
  * @package MovieList/includes/classes/class-metabox.php
  */
 
-namespace includes\classes;
+namespace MovieList\Classes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -16,7 +16,7 @@ class Custom_Metabox {
 	/**
 	 * Initialization of Custom Metabox and Save post.
 	 */
-	public function generate_metaboxes() {
+	public static function generate_metaboxes() {
 		add_action( 'add_meta_boxes', array( self::class, 'add' ) );
 		add_action( 'save_post', array( self::class, 'save' ) );
 	}
