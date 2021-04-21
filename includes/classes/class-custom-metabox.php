@@ -25,15 +25,12 @@ class Custom_Metabox {
 	 * Function to add metabox to the mentioned post type (post, movie-list and so on).
 	 */
 	public static function add() {
-		$screen_to_show = array( 'post', 'movie-list' );
-		foreach ( $screen_to_show as $screens ) {
-			add_meta_box(
-				'movie_price_id',
-				'Movie Details',
-				array( self::class, 'box_html_field' ),
-				$screen_to_show
-			);
-		}
+		add_meta_box(
+			'movie_price_id',
+			'Movie Details',
+			array( self::class, 'box_html_field' ),
+			'movie-list'
+		);
 	}
 
 	/**
