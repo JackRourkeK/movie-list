@@ -84,13 +84,8 @@ class Custom_Metabox {
 		$box_html    .= '<label for="movie_rating">Movie Rating: </label>';
 		$box_html    .= '<input type="number" id="movie_rating" min="1" max="5" name="movie_rating" placeholder="Enter Rating" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_rating', true ) ) . '">';
 		$allowed_html = array(
-			'a'      => array(
-				'href'  => array(),
-				'title' => array(),
-			),
 			'br'     => array(),
 			'u'      => array(),
-			'em'     => array(),
 			'strong' => array(),
 			'h3'     => array(),
 			'input'  => array(
