@@ -7,10 +7,10 @@
 
 namespace MovieList;
 
-use MovieList\Classes\Custom_Posts;
-use MovieList\Classes\Custom_Style;
-use MovieList\Classes\Short_Code;
-use MovieList\CLasses\Taxonomies;
+use MovieList\Classes\Custom_Posts as CustomPosts;
+use MovieList\Classes\Custom_Style as CustomStyle;
+use MovieList\Classes\Short_Code as ShortCode;
+use MovieList\CLasses\Taxonomies as Taxonomies;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -42,9 +42,9 @@ class Movie_List {
 	 * Loading required files calling static classes.
 	 */
 	public function __construct() {
-		Custom_Style::add_styles();
-		Short_Code::generate_shortcode();
-		Custom_Posts::init();
+		CustomStyle::add_styles();
+		ShortCode::generate_shortcode();
+		CustomPosts::init();
 		Taxonomies::init();
 	}
 }
