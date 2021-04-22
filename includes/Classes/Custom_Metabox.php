@@ -27,7 +27,7 @@ class Custom_Metabox {
 	public static function add() {
 		add_meta_box(
 			'movie_price_id',
-			'Movie Details',
+			esc_html__( 'Movie Details', 'movie-list' ),
 			array( self::class, 'box_html_field' ),
 			'movie-list'
 		);
@@ -87,9 +87,9 @@ class Custom_Metabox {
 	public static function box_html_field( $post ) {
 		$box_html     = '';
 		$box_html    .= '<input type="hidden" name="bu_post_nonce" value="' . wp_create_nonce( 'bu_post_nonce' ) . '">';
-		$box_html    .= '<label for="movie_price">Movie Price: </label>';
+		$box_html    .= '<label for="movie_price">' . esc_html__( 'Movie Price', 'movie-list' ) . ': </label>';
 		$box_html    .= '<input type="text" id="movie_price" name="movie_price" placeholder="' . esc_html__( 'Enter Movie Price', 'movie-list' ) . '" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_price', true ) ) . '">';
-		$box_html    .= ' <label for="movie_rating">Movie Rating: </label>';
+		$box_html    .= ' <label for="movie_rating">' . esc_html__( 'Movie Rating', 'movie-list' ) . ' : </label>';
 		$box_html    .= '<input type="number" id="movie_rating" min="1" max="5" style="width:125px;" name="movie_rating" placeholder="' . esc_html__( 'Enter Rating', 'movie-list' ) . '" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_rating', true ) ) . '">';
 		$allowed_html = array(
 			'br'     => array(),

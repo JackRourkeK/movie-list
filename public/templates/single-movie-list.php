@@ -42,10 +42,10 @@
 					$rating_value .= '<br /></div><br /><br />';
 				}
 				if ( $get_movie_price > 0 ) {
-					$movie_price .= '<h3> Movie Price: NRs. <u>' . $get_movie_price . '</u></h3>';
+					$movie_price .= '<h3> ' . esc_html__( 'Movie Price', 'movie-list' ) . ' : NRS. <u>' . $get_movie_price . '</u></h3>';
 				}
 				if ( ! empty( $get_movie_tags ) ) {
-					$movie_tags_list .= '<br><strong> Movie Tags: </strong>' . $get_movie_tags_name . '<br />';
+					$movie_tags_list .= '<br><strong> ' . esc_html__( 'Movie Tags', 'movie-list' ) . ' : </strong>' . $get_movie_tags_name . '<br />';
 				}
 
 				echo wp_kses_post( $movie_price );
@@ -57,7 +57,7 @@
 				?>
 
 				<nav class="nav-single">
-					<h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'movie-list' ); ?></h3>
+					<h3 class="assistive-text"><?php esc_html__( 'Post navigation', 'movie-list' ); ?></h3>
 					<span class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'movie-list' ) . '</span> %title' ); ?></span>
 					<span class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'movie-list' ) . '</span>' ); ?></span>
 				</nav><!-- .nav-single -->

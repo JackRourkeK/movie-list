@@ -1,0 +1,186 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Movie List\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-22 08:15+0000\n"
+"PO-Revision-Date: 2021-04-22 09:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: नेपाली\n"
+"Language: ne_NP\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.2; wp-5.7.1\n"
+"X-Domain: movie-list"
+
+#: includes/Classes/Custom_Posts.php:45
+msgid "Add Movie"
+msgstr "नया चलचित्र"
+
+#: includes/Classes/Custom_Posts.php:36
+msgid "Add New"
+msgstr "नया थप्नुस "
+
+#: includes/Classes/Custom_Posts.php:37
+msgid "Add New Movie"
+msgstr "नया चलचित्र थप्नुस"
+
+#: includes/Classes/Taxonomies.php:36
+msgid "Add New Movie Type"
+msgstr "नया चलचित्र प्रकार थप्नुस"
+
+#: includes/Classes/Taxonomies.php:33
+msgid "All Movie Types"
+msgstr "सबै चलचित्र प्रकार"
+
+#: includes/Classes/Custom_Posts.php:40
+msgid "All Movies"
+msgstr "सबै चलचित्रहरू"
+
+#. Author of the plugin
+msgid "Balram Upadhyay"
+msgstr "Balram Upadhyay"
+
+#: includes/Classes/Custom_Posts.php:38
+msgid "Edit Movie"
+msgstr "चलचित्र सम्पादन गर्नुहोस्"
+
+#: includes/Classes/Taxonomies.php:34
+msgid "Edit Movie Type"
+msgstr "चलचित्र प्रकार सम्पादन गर्नुहोस्"
+
+#: includes/Classes/Custom_Metabox.php:91
+msgid "Enter Movie Price"
+msgstr " चलचित्र मूल्य प्रविष्ट गर्नुहोस्"
+
+#: includes/Classes/Custom_Metabox.php:93
+msgid "Enter Rating"
+msgstr "रेटिंग प्रविष्ट गर्नुहोस्"
+
+#: includes/Classes/Custom_Posts.php:51
+msgid "Holds our Movies and Movie specific data"
+msgstr "हाम्रो चलचित्र र चलचित्र विशिष्ट डाटा होल्ड गर्दछ"
+
+#: public/templates/single-movie-list.php:12
+msgid "Home Page"
+msgstr "गृहपृष्ठ"
+
+#. URI of the plugin
+msgid "https://github.com/JackRourkeK/movie-list"
+msgstr "https://github.com/JackRourkeK/movie-list"
+
+#. Author URI of the plugin
+msgid "https://www.bru.com.np"
+msgstr "https://www.bru.com.np"
+
+#: includes/Classes/Custom_Metabox.php:30 includes/Classes/Short_Code.php:85
+msgid "Movie Details"
+msgstr "चलचित्र विवरणहरू"
+
+#. Name of the plugin
+msgid "Movie List"
+msgstr "चलचित्र सूची"
+
+#. Description of the plugin
+msgid ""
+"Movie Listing with Custom Categories and Tags. Listing and Details Page "
+"Included."
+msgstr ""
+"Movie Listing with Custom Categories and Tags. Listing and Details Page "
+"Included."
+
+#: includes/Classes/Custom_Metabox.php:90 includes/Classes/Short_Code.php:66
+msgid "Movie Price"
+msgstr "चलचित्र मूल्य"
+
+#: includes/Classes/Custom_Metabox.php:92
+msgid "Movie Rating"
+msgstr "चलचित्र रेटिंग"
+
+#: includes/Classes/Short_Code.php:69
+msgid "Movie Tags"
+msgstr "चलचित्र ट्यागहरू"
+
+#: includes/Classes/Taxonomies.php:38
+msgid "Movie Type"
+msgstr "चलचित्र प्रकार"
+
+#: includes/Classes/Custom_Posts.php:46
+msgid "Movies"
+msgstr "चलचित्रहरू"
+
+#: includes/Classes/Custom_Posts.php:39
+msgid "New Movie"
+msgstr "नयाँ चलचित्र"
+
+#: includes/Classes/Taxonomies.php:37
+msgid "New Movie Type"
+msgstr "नयाँ चलचित्र प्रकार"
+
+#: public/templates/single-movie-list.php:62
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr "&rarr;"
+
+#: includes/Classes/Taxonomies.php:31
+msgid "No Movie Types found"
+msgstr "कुनै चलचित्र प्रकार भेटिएन"
+
+#: includes/Classes/Taxonomies.php:32
+msgid "No Movie Types found in the Trash"
+msgstr "रद्दीटोकरीमा कुनै चलचित्र प्रकार भेटिएन"
+
+#: includes/Classes/Custom_Posts.php:43
+msgid "No Movies found"
+msgstr "कुनै चलचित्र फेला परेन"
+
+#: includes/Classes/Custom_Posts.php:44
+msgid "No Movies found in the Trash"
+msgstr "रद्दीटोकरीमा कुनै चलचित्र फेला परेन"
+
+#: public/templates/single-movie-list.php:60
+msgid "Post navigation"
+msgstr "नेभिगेसन पोष्ट गर्नुहोस्"
+
+#: includes/Classes/Custom_Posts.php:34
+msgctxt "Post Type General Name"
+msgid "Movies List"
+msgstr "चलचित्र सूची"
+
+#: includes/Classes/Custom_Posts.php:35
+msgctxt "Post Type Singular Name"
+msgid "Movie List"
+msgstr "चलचित्र सूची"
+
+#: public/templates/single-movie-list.php:61
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr "&larr;"
+
+#: includes/Classes/Taxonomies.php:30
+msgid "Search Movie Types"
+msgstr "चलचित्र प्रकारहरू खोज्नुहोस्"
+
+#: includes/Classes/Custom_Posts.php:42
+msgid "Search Movies"
+msgstr "चलचित्र खोज्नुहोस्"
+
+#: includes/Classes/Taxonomies.php:28
+msgctxt "Taxonomy General Name"
+msgid "Movie Types"
+msgstr "चलचित्र प्रकारहरू"
+
+#: includes/Classes/Taxonomies.php:29
+msgctxt "Taxonomy Singular Name"
+msgid "Movie Type"
+msgstr "चलचित्र प्रकार"
+
+#: includes/Classes/Taxonomies.php:35
+msgid "Update Movie Type"
+msgstr "चलचित्र प्रकार अपडेट गर्नुहोस्"
+
+#: includes/Classes/Custom_Posts.php:41
+msgid "View Movies"
+msgstr "चलचित्र हेर्नुहोस्"

@@ -32,7 +32,7 @@ class Custom_Posts {
 	public static function generate_custom_posts() {
 		$labels = array(
 			'name'               => _x( 'Movies List', 'Post Type General Name', 'movie-list' ),
-			'singular_name'      => _x( 'Movie', 'Post Type Singular Name', 'movie-list' ),
+			'singular_name'      => _x( 'Movie List', 'Post Type Singular Name', 'movie-list' ),
 			'add_new'            => esc_html__( 'Add New', 'movie-list' ),
 			'add_new_item'       => esc_html__( 'Add New Movie', 'movie-list' ),
 			'edit_item'          => esc_html__( 'Edit Movie', 'movie-list' ),
@@ -72,12 +72,12 @@ class Custom_Posts {
 	 */
 	public static function single_page_posts( $single ) {
 		global $post;
+
 		if ( 'movie-list' === $post->post_type && is_singular( 'movie-list' ) ) {
 			if ( file_exists( BU_PLUGIN_PATH . 'public/templates/single-movie-list.php' ) ) {
 				return BU_PLUGIN_PATH . 'public/templates/single-movie-list.php';
 			}
 		}
-		return $single;
 	}
 
 	/**

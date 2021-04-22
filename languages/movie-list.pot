@@ -1,0 +1,185 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Movie List\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-22 08:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.2; wp-5.7.1\n"
+"X-Domain: movie-list"
+
+#: includes/Classes/Custom_Posts.php:45
+msgid "Add Movie"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:36
+msgid "Add New"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:37
+msgid "Add New Movie"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:36
+msgid "Add New Movie Type"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:33
+msgid "All Movie Types"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:40
+msgid "All Movies"
+msgstr ""
+
+#. Author of the plugin
+msgid "Balram Upadhyay"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:38
+msgid "Edit Movie"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:34
+msgid "Edit Movie Type"
+msgstr ""
+
+#: includes/Classes/Custom_Metabox.php:91
+msgid "Enter Movie Price"
+msgstr ""
+
+#: includes/Classes/Custom_Metabox.php:93
+msgid "Enter Rating"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:51
+msgid "Holds our Movies and Movie specific data"
+msgstr ""
+
+#: public/templates/single-movie-list.php:12
+msgid "Home Page"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/JackRourkeK/movie-list"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.bru.com.np"
+msgstr ""
+
+#: includes/Classes/Custom_Metabox.php:30 includes/Classes/Short_Code.php:85
+msgid "Movie Details"
+msgstr ""
+
+#. Name of the plugin
+msgid "Movie List"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Movie Listing with Custom Categories and Tags. Listing and Details Page "
+"Included."
+msgstr ""
+
+#: includes/Classes/Custom_Metabox.php:90 includes/Classes/Short_Code.php:66
+msgid "Movie Price"
+msgstr ""
+
+#: includes/Classes/Custom_Metabox.php:92
+msgid "Movie Rating"
+msgstr ""
+
+#: includes/Classes/Short_Code.php:69
+msgid "Movie Tags"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:38
+msgid "Movie Type"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:46
+msgid "Movies"
+msgstr "चलचित्रहरू"
+
+#: includes/Classes/Custom_Posts.php:39
+msgid "New Movie"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:37
+msgid "New Movie Type"
+msgstr ""
+
+#: public/templates/single-movie-list.php:62
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:31
+msgid "No Movie Types found"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:32
+msgid "No Movie Types found in the Trash"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:43
+msgid "No Movies found"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:44
+msgid "No Movies found in the Trash"
+msgstr ""
+
+#: public/templates/single-movie-list.php:60
+msgid "Post navigation"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:34
+msgctxt "Post Type General Name"
+msgid "Movies List"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:35
+msgctxt "Post Type Singular Name"
+msgid "Movie List"
+msgstr ""
+
+#: public/templates/single-movie-list.php:61
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:30
+msgid "Search Movie Types"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:42
+msgid "Search Movies"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:28
+msgctxt "Taxonomy General Name"
+msgid "Movie Types"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:29
+msgctxt "Taxonomy Singular Name"
+msgid "Movie Type"
+msgstr ""
+
+#: includes/Classes/Taxonomies.php:35
+msgid "Update Movie Type"
+msgstr ""
+
+#: includes/Classes/Custom_Posts.php:41
+msgid "View Movies"
+msgstr ""
