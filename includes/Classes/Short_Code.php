@@ -7,6 +7,8 @@
 
 namespace MovieList\Classes;
 
+use MovieList\Classes\Custom_Style;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
