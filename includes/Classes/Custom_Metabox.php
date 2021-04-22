@@ -47,10 +47,14 @@ class Custom_Metabox {
 				wp_unslash( $_POST['movie_rating'] )
 			) : 0;
 
-			self::update_movie_list_fields( $post_id, 'movie_price', $movie_price, $_POST );
-			self::update_movie_list_fields( $post_id, 'movie_rating', $movie_rating, $_POST );
+			$movie_price_update  = self::update_movie_list_fields( $post_id, 'movie_price', $movie_price, $_POST );
+			$movie_rating_update = self::update_movie_list_fields( $post_id, 'movie_rating', $movie_rating, $_POST );
+			if ( $movie_price_update || $movie_rating_update ) {
+				return true;
+			}
+		} else {
+			return false;
 		}
-		return true;
 	}
 
 	/**
@@ -63,11 +67,15 @@ class Custom_Metabox {
 	 */
 	private static function update_movie_list_fields( $post_id, $field_name, $field_value, $data ) {
 		if ( array_key_exists( $field_name, $data ) ) {
-			update_post_meta(
+			$result = update_post_meta(
 				$post_id,
 				$field_name,
 				$field_value
 			);
+			if ( $result ) {
+				return true;
+			}
+			return false;
 		}
 	}
 
@@ -80,9 +88,9 @@ class Custom_Metabox {
 		$box_html     = '';
 		$box_html    .= '<input type="hidden" name="bu_post_nonce" value="' . wp_create_nonce( 'bu_post_nonce' ) . '">';
 		$box_html    .= '<label for="movie_price">Movie Price: </label>';
-		$box_html    .= '<input type="text" id="movie_price" name="movie_price" placeholder="Enter Movie Price" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_price', true ) ) . '">';
-		$box_html    .= '<label for="movie_rating">Movie Rating: </label>';
-		$box_html    .= '<input type="number" id="movie_rating" min="1" max="5" name="movie_rating" placeholder="Enter Rating" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_rating', true ) ) . '">';
+		$box_html    .= '<input type="text" id="movie_price" name="movie_price" placeholder="' . esc_html__( 'Enter Movie Price', 'movie-list' ) . '" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_price', true ) ) . '">';
+		$box_html    .= ' <label for="movie_rating">Movie Rating: </label>';
+		$box_html    .= '<input type="number" id="movie_rating" min="1" max="5" style="width:125px;" name="movie_rating" placeholder="' . esc_html__( 'Enter Rating', 'movie-list' ) . '" value="' . esc_attr( get_post_meta( get_the_ID(), 'movie_rating', true ) ) . '">';
 		$allowed_html = array(
 			'br'     => array(),
 			'u'      => array(),
@@ -96,6 +104,7 @@ class Custom_Metabox {
 				'name'        => array(),
 				'placeholder' => array(),
 				'value'       => array(),
+				'style'       => array(),
 			),
 			'label'  => array(
 				'for'   => array(),
