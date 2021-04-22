@@ -22,8 +22,27 @@ class Custom_Posts {
 	public static function init() {
 		add_action( 'init', array( MetaBox::class, 'generate_metaboxes' ) );
 		add_action( 'init', array( self::class, 'generate_custom_posts' ) );
-		add_filter( 'single_template', array( self::class, 'single_page_posts' ) );
+		add_filter( 'single_template', array( self::class, 'single_page_content_filter' ) );
 
+	}
+
+	/**
+	 * Returns custom styles listed here which is used in front for Single Page.
+	 *
+	 * @param string $classes ().
+	 */
+	public static function get_custom_css_single_page( $classes ) {
+		$classes = '.entry-header , .featured-media-inner, .post-thumbnail{ display: none !important; };';
+		return $classes;
+	}
+
+
+	/**
+	 * Change only content for single page post.
+	 */
+	public static function single_page_content_filter() {
+		add_filter( 'wp_get_custom_css', array( self::class, 'get_custom_css_single_page' ) );
+		add_filter( 'the_content', array( self::class, 'single_page_post_html' ) );
 	}
 
 	/**
@@ -70,14 +89,72 @@ class Custom_Posts {
 	 *
 	 * @param mixed $single (Returns single page).
 	 */
-	public static function single_page_posts( $single ) {
+	public static function single_page_post_html( $single ) {
 		global $post;
 
-		if ( 'movie-list' === $post->post_type && is_singular( 'movie-list' ) ) {
-			if ( file_exists( BU_PLUGIN_PATH . 'public/templates/single-movie-list.php' ) ) {
-				return BU_PLUGIN_PATH . 'public/templates/single-movie-list.php';
+		$movie_list = get_post( $post->ID );
+		if ( empty( $movie_list ) ) {
+			return false;
+		}
+
+		$result_html = '';
+
+		$rating_value    = '';
+		$movie_price     = '';
+		$movie_tags_list = '';
+
+		$get_rating_value = get_post_meta( $post->ID, 'movie_rating', true );
+		$get_movie_price  = get_post_meta( $post->ID, 'movie_price', true );
+		$get_movie_tags   = get_the_terms( $post->ID, 'movie_type' );
+
+		$movie_tags = array();
+		if ( ! empty( $get_movie_tags ) ) {
+			foreach ( $get_movie_tags as $movie_tags_value ) {
+				$movie_tags[] = $movie_tags_value->name;
 			}
 		}
+
+		$get_movie_tags_name = implode( ', ', $movie_tags );
+
+		if ( $get_rating_value > 0 ) {
+			$rating_value .= '<br />';
+			$rating_value .= '<div class="wrapper-star">';
+			for ( $i = 1; $i <= $get_rating_value; $i++ ) {
+				$rating_value .= '<label for="r1">&#10038;</label>';
+			}
+			$rating_value .= '<br /></div><br />';
+		}
+		if ( $get_movie_price > 0 ) {
+			$movie_price .= '<h3>' . esc_html__( 'Movie Price', 'movie-list' ) . ': NRS. <u>' . $get_movie_price . '</u></h3>';
+		}
+		if ( ! empty( $get_movie_tags ) ) {
+			$movie_tags_list .= '<strong> ' . esc_html__( 'Movie Tags', 'movie-list' ) . ': </strong>' . $get_movie_tags_name . '';
+		}
+		$result_html .= '<div class="entry-content"><h1>'
+			. $movie_list->post_title
+			. '</h1>'
+			. $movie_price
+			. get_the_post_thumbnail(
+				$movie_list->ID,
+				'post-thumbnail',
+				array(
+					'class' => 'movie-img',
+					'style' => 'width:100px; height:100px;',
+				)
+			)
+			. $rating_value
+			. $movie_tags_list
+			. ( ( ! empty( $movie_list->post_content ) ) ? '<h3>' . esc_html__( 'Movie Details', 'movie-list' ) . ': </h3>' : '' ) . $movie_list->post_content;
+
+		$result_html .= '<span class="nav-previous">' . previous_post_link( '%link', ' <span class = "meta-nav"> ' . esc_html__( '&larr;', 'movie-list' ) . ' </span> %title' )
+		. '</span><span class="nav-next"' . next_post_link(
+			'%link',
+			' %title <span class = "meta-nav"> ' . esc_html__( '&rarr;', 'movie-list' )
+			. ' </span> '
+		) . '</span>';
+		$result_html .= '</div>';
+
+		return $result_html;
 	}
 
 	/**

@@ -25,10 +25,12 @@ class Custom_Style {
 	 */
 	public static function enqueue_custom_front_style() {
 		global $post;
+		if ( empty( $post ) ) {
+			return false;
+		}
+		wp_register_style( 'bu_styles', BU_PLUGIN_URL . 'assets/css/style.css', array(), array() );
 
-		wp_register_style( 'bu_styles', BU_PLUGIN_URL . 'public/css/style.css', array(), array() );
-
-		if ( has_shortcode( $post->post_content, 'bu_movie_list' ) && is_page() ) {
+		if ( ( has_shortcode( $post->post_content, 'bu_movie_list' ) || is_singular( 'movie-list' ) ) && ( is_page() || is_singular( 'movie-list' ) ) ) {
 			wp_enqueue_style( 'bu_styles' );
 		}
 	}
