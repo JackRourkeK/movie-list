@@ -42,7 +42,7 @@ class Movie_List {
 	/**
 	 * Loading required files calling static classes.
 	 */
-	public function __construct() {
+	private function __construct() {
 		CustomStyle::add_styles();
 		ShortCode::generate_shortcode();
 		CustomPosts::init();
