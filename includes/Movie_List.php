@@ -9,7 +9,7 @@ namespace MovieList;
 
 use MovieList\Classes\Custom_Posts as CustomPosts;
 use MovieList\Classes\Custom_Style as CustomStyle;
-use MovieList\Classes\LoadTextDomain as TextDomain;
+use MovieList\Classes\Load_Text_Domain as LoadTextDomain;
 use MovieList\Classes\Short_Code as ShortCode;
 use MovieList\CLasses\Taxonomies as Taxonomies;
 
@@ -47,6 +47,6 @@ class Movie_List {
 		ShortCode::generate_shortcode();
 		CustomPosts::init();
 		Taxonomies::init();
-		TextDomain::init();
+		LoadTextDomain::init();
 	}
 }
