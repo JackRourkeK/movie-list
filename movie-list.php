@@ -49,7 +49,7 @@ if ( ! defined( 'BU_PLUGIN_BASENAME' ) ) {
 }
 
 /**
- * Checks if Movie_List class exists or not, if not, then create an instance of the Movie_List class.
+ * Checks if Movie_List class exists or not, if not, then create an instance of the Movie_List class. (Movie-list-test checking)
  */
 if ( ! class_exists( 'Movie_List' ) ) {
 	Movie_List::instance();
