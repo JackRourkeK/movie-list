@@ -49,7 +49,7 @@ if ( ! defined( 'BU_PLUGIN_BASENAME' ) ) {
 }
 
 /**
- * Checks if Movie_List class exists or not, if not, then create an instance of the Movie_List class (Checking for PR New Added and Rebase and Squash).
+ * Checks if Movie_List class exists or not, if not, then create an instance of the Movie_List class (Checking for PR New Added and Rebase and Squash Something Changed).
  */
 if ( ! class_exists( 'Movie_List' ) ) {
 	Movie_List::instance();
